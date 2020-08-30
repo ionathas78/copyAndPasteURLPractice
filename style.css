@@ -9,7 +9,7 @@ header {
     top: 0;
     left: 0;
     height: 1.75em;
-    background-color: #333333;
+    background-color: #333;
     color: #eee;
     width: 100%;
     padding: 3px 2px;
@@ -21,6 +21,20 @@ header span {
     margin-right: 0.5vw;
     font-size: 1.5em;
     align-items: center;
+}
+
+section {
+    position: absolute;
+    top: -5vh;
+    left: -5vw;
+    margin: 0;
+    padding: 10vh 10vw;
+    height: 120vh;
+    width: 120vw;
+    overflow: auto;
+    background: #eee;
+    color: #000;
+    z-index: -1;
 }
 
 #input-area {
@@ -35,7 +49,7 @@ header span {
 }
 
 #input-area input {
-    background-color: #333333;
+    background-color: #333;
     color: #eee;
     border-style: none;
     width: 91%;
