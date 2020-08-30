@@ -6,6 +6,7 @@ let lockButton = document.getElementById("lock-button");
 let addressBar = document.getElementById("address-bar");
 let starButton = document.getElementById("star-button");
 let optionButton = document.getElementById("option-button");
+let contentSection = document.getElementById("content-section");
 
 
 document.addEventListener("click", event => {
@@ -29,7 +30,7 @@ document.addEventListener("click", event => {
         case lockButton:
             addressBar.value = "You clicked lock-button";
             break;
-            
+
         case starButton:
             addressBar.value = "You clicked star-button";
             break;
@@ -40,4 +41,9 @@ document.addEventListener("click", event => {
         
         default:
     }
+})
+
+addressBar.addEventListener("paste", event => {
+    let pasteText = (event.clipboardData || window.clipboardData).getData('text');
+    contentSection.innerText = pasteText;
 })
