@@ -297,6 +297,74 @@ function setSwordPage() {
     return currentPage;
 }
 
+function setScaryPage() {
+    let iCount = 4;
+    let altText = "Scary picture";
+    let headerText = "Scares";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/scary0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/scary1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/scary2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/scary3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setMousePage() {
+    let iCount = 4;
+    let altText = "Mouse picture";
+    let headerText = "Mouse";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/mouse1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/mouse2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/mouse3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
 /*  
     -------------------------------------------------------------------------------------------
             Events
@@ -379,9 +447,11 @@ addressBar.addEventListener("paste", event => {
             addresses.push("https://my.swordpage.net/images/01");
             break;
         case "http://scariest-page_ever.com":
+            setPage(setScaryPage());
             addresses.push("http://scariest-page_ever.com");
             break;
         case "http://www.mypictures.net/gallery?search_term=mouse%type=jpg":
+            setPage(setMousePage());
             addresses.push("http://www.mypictures.net/gallery?search_term=mouse%type=jpg");
             break;
         default:
