@@ -88,6 +88,73 @@ function setInitialPage() {
     return currentPage;
 }
 
+function setPuppyPage() {
+    let iCount = 4;
+    let altText = "Dog picture";
+    let headerText = "Dogs";
+    currentPage = document.createElement("div");
+    let iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/puppy0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/puppy1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/puppy2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/puppy3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setKittyPage() {
+    let iCount = 4;
+    let altText = "Cat picture";
+    let headerText = "Cats";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/kitty0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/kitty1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/kitty2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/kitty3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
 
 /*  
     -------------------------------------------------------------------------------------------
@@ -146,21 +213,22 @@ document.addEventListener("click", event => {
 addressBar.addEventListener("paste", event => {
     let pasteText = (event.clipboardData || window.clipboardData).getData('text');
     switch (pasteText.toLowerCase()) {
-        case "https://www.puppydogs.com":
+        case "www.puppydogs.com":
+            setPage(setPuppyPage());
             break;
-        case "www.kittycats.be":
+        case "http://www.kitty.cats.be":
             break;
-        case "http://www.bunnyrabbits.net":
+        case "ftp://www.bunnyrabbits.net":
+            break;
+        case "www.dragonpictures.com":
             break;
         case "mail.hissingsnakes.io":
             break;
-        case "https://maps.dragonpictures.com/index":
+        case "https://my.swordpage.net/images/01":
             break;
-        case "my.swordpage.net":
+        case "http://scariest-page_ever.com":
             break;
-        case "http://scariest-page-ever.com":
-            break;
-        case "http://www.mypictures.net/gallery/cool_robot_pix/01":
+        case "http://www.mypictures.net/gallery?search_term=dragon%type=jpg":
             break;
         default:
     }
