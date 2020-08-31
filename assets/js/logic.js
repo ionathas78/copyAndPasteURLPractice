@@ -1,4 +1,5 @@
 let pages = [];
+let addresses = [];
 let currentPage = null;
 let pageIndex = -1;
 let currentIndex = -1;
@@ -28,6 +29,7 @@ function setPage(pageToSet) {
     if (currentIndex < pageIndex) {
         for (let i = pageIndex; i > currentIndex; i--) {
             pages.pop();
+            addresses.pop()
         }
     }
 
@@ -62,6 +64,9 @@ function setInitialPage() {
     let pCount = 8;
     currentPage = document.createElement("div");
     pTags = [];
+
+    addresses.push("https://github.com");
+
     for (let i = 0; i < pCount; i++) {
         pTags.push(document.createElement("p"));
     }
@@ -80,7 +85,7 @@ function setInitialPage() {
                             "somewhere other than the website's main page. Unless it says 'index' after the slash. That's typically the same as the main page.";
     pTags[6].textContent = "Web addresses can't have spaces in them. They can, however, have dashes or underscores: http://scariest-page_ever.com is a valid web address.";
     pTags[7].textContent = "Some web addresses have other characters at the end, like question marks (?) and percent signs (%). These are " +
-                            "usually called queries: http://www.mypictures.net/gallery?search_term=dragon%type=jpg.";
+                            "usually called queries: http://www.mypictures.net/gallery?search_term=mouse%type=jpg.";
 
     for (let j = 0; j < pCount; j++) {
         currentPage.appendChild(pTags[j]);
@@ -156,6 +161,142 @@ function setKittyPage() {
     return currentPage;
 }
 
+function setBunnyPage() {
+    let iCount = 4;
+    let altText = "Rabbit picture";
+    let headerText = "Rabbits";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/bunny0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/bunny1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/bunny2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/bunny3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setDragonPage() {
+    let iCount = 4;
+    let altText = "Dragon picture";
+    let headerText = "Dragons";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/dragon0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/dragon1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/dragon2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/dragon3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setSnakePage() {
+    let iCount = 4;
+    let altText = "Snake picture";
+    let headerText = "Snakes";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/snake0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/snake1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/snake2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/snake3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setSwordPage() {
+    let iCount = 4;
+    let altText = "Sword picture";
+    let headerText = "Swords";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/sword0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/sword1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/sword2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/sword3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
 /*  
     -------------------------------------------------------------------------------------------
             Events
@@ -215,20 +356,33 @@ addressBar.addEventListener("paste", event => {
     switch (pasteText.toLowerCase()) {
         case "www.puppydogs.com":
             setPage(setPuppyPage());
+            addresses.push("www.puppydogs.com");
             break;
         case "http://www.kitty.cats.be":
+            setPage(setKittyPage());
+            addresses.push("http://www.kitty.cats.be");
             break;
         case "ftp://www.bunnyrabbits.net":
+            setPage(setBunnyPage());
+            addresses.push("ftp://www.bunnyrabbits.net");
             break;
         case "www.dragonpictures.com":
+            setPage(setDragonPage());
+            addresses.push("www.dragonpictures.com");
             break;
         case "mail.hissingsnakes.io":
+            setPage(setSnakePage());
+            addresses.push("mail.hissingsnakes.io");
             break;
         case "https://my.swordpage.net/images/01":
+            setPage(setSwordPage());
+            addresses.push("https://my.swordpage.net/images/01");
             break;
         case "http://scariest-page_ever.com":
+            addresses.push("http://scariest-page_ever.com");
             break;
-        case "http://www.mypictures.net/gallery?search_term=dragon%type=jpg":
+        case "http://www.mypictures.net/gallery?search_term=mouse%type=jpg":
+            addresses.push("http://www.mypictures.net/gallery?search_term=mouse%type=jpg");
             break;
         default:
     }
