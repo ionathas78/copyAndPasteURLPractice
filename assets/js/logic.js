@@ -70,22 +70,23 @@ function setInitialPage() {
     for (let i = 0; i < pCount; i++) {
         pTags.push(document.createElement("p"));
     }
-    pTags[0].textContent = "URL stands for Uniform Resource Locator. It looks like this: www.puppydogs.com. " +
+    pTags[0].innerHTML = "URL stands for Uniform Resource Locator. It looks like this: <span class='link-text'>www.puppydogs.com</span>. " +
                             "A URL is like an address that tells your browser where to find the web page you want.";
-    pTags[1].textContent = "A full URL includes a prefix before the address called the protocol, like http://www.kitty.cats.be. " +
+    pTags[1].innerHTML = "A full URL includes a prefix before the address called the protocol, like <span class='link-text'>http://www.kitty.cats.be</span>. " +
                             "This tells your browser how to read the file at the indicated address.";
-    pTags[2].textContent = "HTTP means HyperText Transfer Protocol, but it's not the only one you'll find on the web. " +
-                            "FTP stands for File Transfer Protocol, like ftp://www.bunnyrabbits.net. " +
+    pTags[2].innerHTML = "HTTP means HyperText Transfer Protocol, but it's not the only one you'll find on the web. " +
+                            "FTP stands for File Transfer Protocol, like <span class='link-text'>ftp://www.bunnyrabbits.net</span>. " +
                             "You often use FTP to connect to file servers, directories where programs and data are stored.";
-    pTags[3].textContent = "The part of the address after the 'www' at the beginning is called the 'domain'. In www.dragonpictures.com, " +
+    pTags[3].innerHTML = "The part of the address after the 'www' at the beginning is called the 'domain'. In <span class='link-text'>www.dragonpictures.com</span>, " +
                             "the domain is dragonpictures.com.";
-    pTags[4].textContent = "A web address doesn't have to start with 'www', either. mail.hissingsnakes.io is another valid web address. " +
+    pTags[4].innerHTML = "A web address doesn't have to start with 'www', either. <span class='link-text'>mail.hissingsnakes.io</span> is another valid web address. " +
                             "Since it starts with 'mail', it probably goes to the domain's mail server.";
-    pTags[5].textContent = "If a web address has a slash ('/') in it, like this: https://my.swordpage.net/images/01, that usually means it goes " +
+    pTags[5].innerHTML = "If a web address has a slash ('/') in it, like this: <span class='link-text'>https://my.swordpage.net/images/01</span>, that usually means it goes " +
                             "somewhere other than the website's main page. Unless it says 'index' after the slash. That's typically the same as the main page.";
-    pTags[6].textContent = "Web addresses can't have spaces in them. They can, however, have dashes or underscores: http://scariest-page_ever.com is a valid web address.";
-    pTags[7].textContent = "Some web addresses have other characters at the end, like question marks (?) and percent signs (%). These are " +
-                            "usually called queries: http://www.mypictures.net/gallery?search_term=mouse%type=jpg.";
+    pTags[6].innerHTML = "Web addresses can't have spaces in them. They can, however, have dashes or underscores: <span class='link-text'>http://scariest-page_ever.com</span> is a valid web address.";
+    pTags[7].innerHTML = "Some web addresses have other characters at the end, like question marks (?) and percent signs (%). These are " +
+                            "usually called queries: <span class='link-text'>http://www.mypictures.net/gallery?search_term=mouse%type=jpg</span>. Queries generally start with a question mark (?) " +
+                            "and are separated with percent signs (%). If you remove the query from the URL, it may change the behavior of the web page.";
 
     for (let j = 0; j < pCount; j++) {
         currentPage.appendChild(pTags[j]);
@@ -419,8 +420,12 @@ document.addEventListener("click", event => {
     }
 })
 
-addressBar.addEventListener("paste", event => {
-    let pasteText = (event.clipboardData || window.clipboardData).getData('text');
+//  addressBar.addEventListener("paste", event => {
+addressBar.addEventListener("change", event => {
+
+    //  let pasteText = (event.clipboardData || window.clipboardData).getData('text');
+    let pasteText = event.value;
+
     switch (pasteText.toLowerCase()) {
         case "www.puppydogs.com":
             setPage(setPuppyPage());
@@ -454,6 +459,10 @@ addressBar.addEventListener("paste", event => {
             setPage(setMousePage());
             addresses.push("http://www.mypictures.net/gallery?search_term=mouse%type=jpg");
             break;
+        case "http://www.mypictures.net/gallery":
+            setPage(setGalleryPage());
+            addresses.push("http://www.mypictures.net/gallery")
         default:
+            addressBar.value = addresses[currentIndex];
     }
 })

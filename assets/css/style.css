@@ -42,6 +42,16 @@ article {
     width: 90vw;
 }
 
+.link-text {
+    color: blue;
+    text-decoration: underline;
+}
+
+.link-text:hover {
+    color: goldenrod;
+    text-decoration: none;
+}
+
 #input-area {
     display: inline-flex;
     border-style: solid;
