@@ -42,6 +42,8 @@ function setPage(pageToSet) {
         contentArticle.removeChild(contentArticle.lastChild);
     }
     contentArticle.appendChild(pageToSet);
+
+    console.log(pages, addresses);
 }
 
 function lastPage() {
@@ -695,7 +697,10 @@ document.addEventListener("click", event => {
 
         case refreshButton:
             //  addressBar.value = "You clicked refresh-button";
-            setPage(pages[currentIndex]);
+            while (contentArticle.lastChild) {
+                contentArticle.removeChild(contentArticle.lastChild);
+            }
+            contentArticle.appendChild(pages[currentIndex]);    
             break;
 
         case homeButton:
