@@ -4,6 +4,7 @@ let currentPage = null;
 let pageIndex = -1;
 let currentIndex = -1;
 let initialPage = window.location.pathname;
+let isUpdating = false;
 
 let leftButton = document.getElementById("left-button");
 let rightButton = document.getElementById("right-button");
@@ -45,13 +46,29 @@ function setPage(pageToSet) {
 
 function lastPage() {
     if (currentIndex > 0) {
-        setPage(pages[currentIndex - 1]);
+        currentIndex--;
+        while (contentArticle.lastChild) {
+            contentArticle.removeChild(contentArticle.lastChild);
+        }
+        contentArticle.appendChild(pages[currentIndex]);
+
+        isUpdating = true;
+            addressBar.value = addresses[currentIndex];
+        isUpdating = false;
     }
 }
 
 function nextPage() {
     if (currentIndex < pageIndex) {
-        setPage(pages[currentIndex + 1]);
+        currentIndex++;
+        while (contentArticle.lastChild) {
+            contentArticle.removeChild(contentArticle.lastChild);
+        }
+        contentArticle.appendChild(pages[currentIndex]);
+
+        isUpdating = true;
+            addressBar.value = addresses[currentIndex];
+        isUpdating = false;
     }
 }
 
@@ -332,10 +349,10 @@ function setScaryPage() {
     return currentPage;
 }
 
-function setMousePage() {
+function setMouseJPGPage() {
     let iCount = 4;
     let altText = "Mouse picture";
-    let headerText = "Mouse";
+    let headerText = "Gallery";
     currentPage = document.createElement("div");
     iTags = [];
     for (let i = 0; i < iCount; i++) {
@@ -366,6 +383,294 @@ function setMousePage() {
     return currentPage;
 }
 
+function setMouseGIFPage() {
+    let iCount = 1;
+    let altText = "Mouse picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse4.gif");
+    iTags[0].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setMousePage() {
+    let iCount = 5;
+    let altText = "Mouse picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/mouse1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/mouse4.gif");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/mouse2.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    iTags[4].setAttribute("src", "assets/images/mouse3.jpeg");
+    iTags[4].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+
+function setGalleryJPGPage() {
+    let iCount = 8;
+    let altText0 = "Mouse picture";
+    let altText1 = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse0.jpeg");
+    iTags[0].setAttribute("alt", altText0);
+
+    iTags[1].setAttribute("src", "assets/images/kanga0.jpeg");
+    iTags[1].setAttribute("alt", altText1);
+
+    iTags[2].setAttribute("src", "assets/images/mouse1.jpeg");
+    iTags[2].setAttribute("alt", altText0);
+
+    iTags[3].setAttribute("src", "assets/images/kanga1.jpeg");
+    iTags[3].setAttribute("alt", altText1);
+
+    iTags[4].setAttribute("src", "assets/images/mouse2.jpeg");
+    iTags[4].setAttribute("alt", altText0);
+
+    iTags[5].setAttribute("src", "assets/images/kanga2.jpeg");
+    iTags[5].setAttribute("alt", altText1);
+
+    iTags[6].setAttribute("src", "assets/images/mouse3.jpeg");
+    iTags[6].setAttribute("alt", altText0);
+
+    iTags[7].setAttribute("src", "assets/images/kanga3.jpeg");
+    iTags[7].setAttribute("alt", altText1);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setGalleryGIFPage() {
+    let iCount = 2;
+    let altText0 = "Mouse picture";
+    let altText1 = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse4.gif");
+    iTags[0].setAttribute("alt", altText0);
+
+    iTags[1].setAttribute("src", "assets/images/kanga4.gif");
+    iTags[1].setAttribute("alt", altText1);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setGalleryPage() {
+    let iCount = 10;
+    let altText0 = "Mouse picture";
+    let altText1 = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/mouse0.jpeg");
+    iTags[0].setAttribute("alt", altText0);
+
+    iTags[1].setAttribute("src", "assets/images/kanga0.jpeg");
+    iTags[1].setAttribute("alt", altText1);
+
+    iTags[2].setAttribute("src", "assets/images/mouse1.jpeg");
+    iTags[2].setAttribute("alt", altText0);
+
+    iTags[3].setAttribute("src", "assets/images/kanga1.jpeg");
+    iTags[3].setAttribute("alt", altText1);
+
+    iTags[4].setAttribute("src", "assets/images/mouse4.gif");
+    iTags[4].setAttribute("alt", altText0);
+
+    iTags[5].setAttribute("src", "assets/images/mouse2.jpeg");
+    iTags[5].setAttribute("alt", altText0);
+
+    iTags[6].setAttribute("src", "assets/images/kanga2.jpeg");
+    iTags[6].setAttribute("alt", altText1);
+
+    iTags[7].setAttribute("src", "assets/images/kanga4.gif");
+    iTags[7].setAttribute("alt", altText1);
+
+    iTags[8].setAttribute("src", "assets/images/mouse3.jpeg");
+    iTags[8].setAttribute("alt", altText0);
+
+    iTags[9].setAttribute("src", "assets/images/kanga3.jpeg");
+    iTags[9].setAttribute("alt", altText1);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setKangaJPGPage() {
+    let iCount = 4;
+    let altText = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/kanga0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/kanga1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/kanga2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/kanga3.jpeg");
+    iTags[3].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setKangaGIFPage() {
+    let iCount = 1;
+    let altText = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/kanga4.gif");
+    iTags[0].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
+function setKangaPage() {
+    let iCount = 5;
+    let altText = "Kangaroo picture";
+    let headerText = "Gallery";
+    currentPage = document.createElement("div");
+    iTags = [];
+    for (let i = 0; i < iCount; i++) {
+        iTags.push(document.createElement("img"));
+    }
+
+    let hTag = document.createElement("h1");
+    hTag.textContent = headerText;
+    hTag.style.fontSize = "3em";
+    hTag.style.textDecoration = "underline";
+
+    iTags[0].setAttribute("src", "assets/images/kanga0.jpeg");
+    iTags[0].setAttribute("alt", altText);
+
+    iTags[1].setAttribute("src", "assets/images/kanga1.jpeg");
+    iTags[1].setAttribute("alt", altText);
+
+    iTags[2].setAttribute("src", "assets/images/kanga2.jpeg");
+    iTags[2].setAttribute("alt", altText);
+
+    iTags[3].setAttribute("src", "assets/images/kanga4.gif");
+    iTags[3].setAttribute("alt", altText);
+
+    iTags[4].setAttribute("src", "assets/images/kanga3.jpeg");
+    iTags[4].setAttribute("alt", altText);
+
+    currentPage.appendChild(hTag);
+    for (let j = 0; j < iCount; j++) {
+        currentPage.appendChild(iTags[j]);
+    }
+    return currentPage;
+}
+
 /*  
     -------------------------------------------------------------------------------------------
             Events
@@ -373,6 +678,10 @@ function setMousePage() {
 */
 
 document.addEventListener("click", event => {
+    if (isUpdating) {
+        return;
+    }
+
     switch (event.target) {
         case leftButton:
             //  addressBar.value = "You clicked left-button";
@@ -391,23 +700,27 @@ document.addEventListener("click", event => {
 
         case homeButton:
             //  addressBar.value = "You clicked home-button";
+            isUpdating = true;
+                addressBar.value = initialPage;
+            isUpdating = false;
+            
             setPage(setInitialPage());
             break;
 
         case lockButton:
             //  addressBar.value = "You clicked lock-button";
-            if (lockButton.textContent = "🔒") {
+            if (lockButton.textContent === "🔒") {
                 lockButton.textContent = "🔓";
-            } else if (lockButton.textContent = "🔓") {
+            } else if (lockButton.textContent === "🔓") {
                 lockButton.textContent = "🔒";
             }
             break;
 
         case starButton:
             //  addressBar.value = "You clicked star-button";
-            if (starButton.textContent = "☆") {
+            if (starButton.textContent === "☆") {
                 starButton.textContent = "★";
-            } else if (starButton.textContent = "★") {
+            } else if (starButton.textContent === "★") {
                 starButton.textContent = "☆";
             }
             break;
@@ -424,45 +737,70 @@ document.addEventListener("click", event => {
 addressBar.addEventListener("change", event => {
 
     //  let pasteText = (event.clipboardData || window.clipboardData).getData('text');
-    let pasteText = event.value;
+    let pasteText = event.target.value.toLowerCase();
 
-    switch (pasteText.toLowerCase()) {
+    switch (pasteText) {
         case "www.puppydogs.com":
             setPage(setPuppyPage());
-            addresses.push("www.puppydogs.com");
             break;
         case "http://www.kitty.cats.be":
             setPage(setKittyPage());
-            addresses.push("http://www.kitty.cats.be");
             break;
         case "ftp://www.bunnyrabbits.net":
             setPage(setBunnyPage());
-            addresses.push("ftp://www.bunnyrabbits.net");
             break;
         case "www.dragonpictures.com":
             setPage(setDragonPage());
-            addresses.push("www.dragonpictures.com");
             break;
         case "mail.hissingsnakes.io":
             setPage(setSnakePage());
-            addresses.push("mail.hissingsnakes.io");
             break;
         case "https://my.swordpage.net/images/01":
             setPage(setSwordPage());
-            addresses.push("https://my.swordpage.net/images/01");
             break;
         case "http://scariest-page_ever.com":
             setPage(setScaryPage());
-            addresses.push("http://scariest-page_ever.com");
             break;
         case "http://www.mypictures.net/gallery?search_term=mouse%type=jpg":
-            setPage(setMousePage());
-            addresses.push("http://www.mypictures.net/gallery?search_term=mouse%type=jpg");
+            setPage(setMouseJPGPage());
             break;
+        case "http://www.mypictures.net/gallery?search_term=mouse%type=jpeg":
+            setPage(setMouseJPGPage());
+            break;
+        case "http://www.mypictures.net/gallery?search_term=mouse%type=gif":
+            setPage(setMouseGIFPage());
+            break;
+        case "http://www.mypictures.net/gallery?search_term=mouse":
+            setPage(setMousePage());
+            break;
+        case "http://www.mypictures.net/gallery?type=jpg":
+            setPage(setGalleryJPGPage());
+            break;
+        case "http://www.mypictures.net/gallery?type=jpeg":
+            setPage(setGalleryJPGPage());
+            break;
+        case "http://www.mypictures.net/gallery?type=gif":
+            setPage(setGalleryGIFPage());
+            break;    
         case "http://www.mypictures.net/gallery":
             setPage(setGalleryPage());
-            addresses.push("http://www.mypictures.net/gallery")
+            break;
+        case "http://www.mypictures.net/gallery?search_term=kangaroo%type=jpg":
+            setPage(setKangaJPGPage());
+            break;
+        case "http://www.mypictures.net/gallery?search_term=kangaroo%type=jpeg":
+            setPage(setKangaJPGPage());
+            break;
+        case "http://www.mypictures.net/gallery?search_term=kangaroo%type=gif":
+            setPage(setKangaGIFPage());
+            break;
+        case "http://www.mypictures.net/gallery?search_term=kangaroo":
+            setPage(setKangaPage());
+            break;
         default:
+            //  console.log(addresses, currentIndex);
             addressBar.value = addresses[currentIndex];
+            return;
     }
+    addresses.push(pasteText);
 })

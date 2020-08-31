@@ -21,6 +21,7 @@ header span {
     margin-right: 0.5vw;
     font-size: 1.5em;
     align-items: center;
+    cursor: default;
 }
 
 section {
@@ -68,4 +69,5 @@ article {
     color: #eee;
     border-style: none;
     width: 91%;
+    cursor: text;
 }
